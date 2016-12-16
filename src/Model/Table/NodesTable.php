@@ -93,6 +93,16 @@ class NodesTable extends Table
             ->requirePresence('body', 'create')
             ->notEmpty('body');
 
+        $validator
+            ->boolean('active')
+            ->requirePresence('active', 'create')
+            ->notEmpty('active');
+
+        $validator
+            ->boolean('published')
+            ->requirePresence('published', 'create')
+            ->notEmpty('published');
+
         return $validator;
     }
 

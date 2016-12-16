@@ -58,11 +58,13 @@ Cms
                          <?php
                                                   echo $this->Form->input('title');
                                                   echo $this->Form->input('body');
-                                                  echo $this->Form->input('user_id', ['options' => $users]);
+                                                  //echo $this->Form->input('user_id', ['options' => $users]);
                                                   echo $this->Form->input('term_id', ['options' => $terms]);
                                                   echo $this->Form->input('parent_id', ['options' => $parentNodes, 'empty' => true]);
                                                   //echo $this->Form->input('lft');
                                                   //echo $this->Form->input('rght');
+                                                  echo $this->Form->input('active');
+                                                  echo $this->Form->input('published');
                                                   echo $this->Form->input('tag_string');
                                                   ?>
                      </div>

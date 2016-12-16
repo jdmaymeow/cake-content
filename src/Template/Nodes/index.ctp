@@ -50,7 +50,9 @@ Cms
                                                         <td><?= $this->Paginator->sort('title') ?></td>
                                                         <td><?= $this->Paginator->sort('user_id') ?></td>
                                                         <td><?= $this->Paginator->sort('term_id') ?></td>
-                                                        <td><?= $this->Paginator->sort('parent_id') ?></td>
+
+                                                        <td><?= $this->Paginator->sort('active') ?></td>
+                                                        <td><?= $this->Paginator->sort('published') ?></td>
 
                                                         <td class="actions text-center"><?= __('Actions') ?></td>
                         </tr>
@@ -61,16 +63,18 @@ Cms
                                                         <td><?= $this->Number->format($node->id) ?></td>
                                                         <td>
                                                             <strong><i class="fa fa-square text-amethyst"></i></strong>
-                                                            <?= h($node->title) ?></td>
+                                                            <?= h($node->title) ?>
+                                                            <?= $node->has('parent_node') ? '<p><small> parent: ' . $this->Html->link($node->parent_node->title, ['controller' => 'Nodes', 'action' => 'view', $node->parent_node->id]) . '</small></p>' : '' ?>
+                                                        </td>
                                                         <td>
                                 <?= $node->has('user') ? $this->Html->link($node->user->username, ['controller' => 'Users', 'action' => 'view', $node->user->id]) : '' ?>
                             </td>
                                                         <td>
                                 <?= $node->has('term') ? $this->Html->link($node->term->name, ['controller' => 'Terms', 'action' => 'view', $node->term->id]) : '' ?>
                             </td>
-                                                        <td>
-                                <?= $node->has('parent_node') ? $this->Html->link($node->parent_node->title, ['controller' => 'Nodes', 'action' => 'view', $node->parent_node->id]) : '' ?>
-                            </td>
+
+                            <td><?= $node->active ? '<label class="label label-success">Yes</label>' : '<label class="label label-danger">No</label>' ?></td>
+                            <td><?= $node->published ? '<label class="label label-success">Yes</label>' : '<label class="label label-danger">No</label>' ?></td>
 
                                                         <td class="actions text-center">
                                 <div class="btn-group">
