@@ -8,6 +8,9 @@ Router::plugin(
     ['path' => '/cake-content'],
     function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
+        $routes->prefix('admin', function ($routes) {
+            $routes->fallbacks(DashedRoute::class);
+        });
     }
 );
 
