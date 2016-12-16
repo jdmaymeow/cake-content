@@ -67,8 +67,8 @@ Cms
                     echo $this->Form->input('active');
                     echo $this->Form->input('published');
                     echo $this->Form->input('tag_string');
-                    echo $this->Form->input('attribute_url');
-                    echo $this->Form->input('attribute_video');
+                    echo $this->Form->input('attribute_url', ['label' => 'Url']);
+                    echo $this->Form->input('attribute_video', ['label' => 'Video']);
                     ?>
                 </div>
                 <div class="form-action">

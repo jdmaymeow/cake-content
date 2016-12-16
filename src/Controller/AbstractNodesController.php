@@ -40,6 +40,7 @@ abstract class AbstractNodesController extends AppController
             'contain' => ['Users', 'Terms', 'ParentNodes', 'Tags', 'ChildNodes']
         ]);
 
+        $node->CustomAttributes = json_decode($node->node_attributes);
         $this->set('node', $node);
         $this->set('_serialize', ['node']);
     }
