@@ -127,6 +127,18 @@ class NodesTable extends Table
         if ($entity->tag_string) {
             $entity->tags = $this->_buildTags($entity->tag_string);
         }
+
+        $entity->node_attributes = $this->_buildAttributes($entity);
+    }
+
+    protected function _buildAttributes($items) {
+        $attributes = [];
+        foreach ($items->toArray() as $key => $value) {
+            if (preg_match('/attribute_(.*)/', $key)) {
+                $attributes[str_replace('attribute_', '', $key)] = $value;
+            }
+        }
+        return json_encode($attributes);
     }
 
     protected function _buildTags($tagString)

@@ -2,6 +2,7 @@
 namespace CakeContent\Controller\Admin;
 
 use Cake\Event\Event;
+use CakeContent\Controller\AbstractNodesController;
 use CakeContent\Controller\AppController;
 
 /**
@@ -9,7 +10,7 @@ use CakeContent\Controller\AppController;
  *
  * @property \CakeContent\Model\Table\NodesTable $Nodes
  */
-class NodesController extends \CakeContent\Controller\NodesController
+class NodesController extends AbstractNodesController 
 {
     public function beforeFilter(Event $event)
     {
