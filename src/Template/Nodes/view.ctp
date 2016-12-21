@@ -88,6 +88,11 @@ Cms
             <h4><?= __('Body') ?></h4>
             <?= $this->Text->autoParagraph(h($node->body)); ?>
         </div>
+
+        <div class="">
+            <h4><?= __('Image') ?></h4>
+            <?= $this->Html->image('/' . $node->CustomAttributes->image, ['class' => 'img-thumbnail', 'width' => 200, 'height' => 200]); ?>
+        </div>
         <div class="related">
             <?php if (!empty($node->child_nodes)): ?>
                 <div class="panel panel-info">

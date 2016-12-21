@@ -43,7 +43,9 @@ Cms
                 <h4 class="panel-title">Form</h4>
             </div>
             <div class="panel-body">
-                <?= $this->Form->create($node, ['align' => [
+                <?= $this->Form->create($node, [
+                    'type'=>'file',
+                    'align' => [
                     'sm' => [
                         'left' => 6,
                         'middle' => 6,
@@ -67,8 +69,7 @@ Cms
                     echo $this->Form->input('active');
                     echo $this->Form->input('published');
                     echo $this->Form->input('tag_string');
-                    echo $this->Form->input('attribute_url', ['label' => 'Url']);
-                    echo $this->Form->input('attribute_video', ['label' => 'Video']);
+                    echo $this->Form->input('image', ['label' => 'Image', 'type' => 'file']);
                     ?>
                 </div>
                 <div class="form-action">
