@@ -2,6 +2,7 @@
 namespace CakeContent\Controller;
 
 use CakeContent\Controller\AppController;
+use CakeMarkdown\May\MeowDown;
 
 /**
  * Nodes Controller
@@ -50,7 +51,15 @@ abstract class AbstractNodesController extends AppController
             'contain' => ['Users', 'Terms', 'ParentNodes', 'Tags', 'ChildNodes']
         ]);
 
+        $node->node_type ? $this->viewBuilder()->template($node->node_type . '_view') : '';
+
+        // decode custom attributes from json string
         $node->CustomAttributes = json_decode($node->node_attributes);
+
+        $MeowDown = new MeowDown();
+
+        $node->markdown_body = $MeowDown->parse($node->body);
+
         $this->set('node', $node);
         $this->set('_serialize', ['node']);
     }
@@ -58,15 +67,27 @@ abstract class AbstractNodesController extends AppController
     /**
      * Add method
      *
+     * @param $nodeType
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($nodeType = null)
     {
         $node = $this->Nodes->newEntity();
+
+        $nodeType ? $this->viewBuilder()->template($nodeType . '_add') : '';
+
+        // is set any node type?
+        $node->node_type = $nodeType;
+
         if ($this->request->is('post')) {
             $node = $this->Nodes->patchEntity($node, $this->request->data);
             $node->user_id = $this->Auth->user('id');
-            $node->attribute_image = $this->Uploader->upload($node->image);
+
+            //check if is uploaded any image
+            if($node->image['size']) {
+                $node->attribute_image = $this->Uploader->upload($node->image);
+            }
+
             if ($this->Nodes->save($node)) {
                 $this->Flash->success(__('The node has been saved.'));
 
@@ -133,6 +154,9 @@ abstract class AbstractNodesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * tags method
+     */
     public function tags()
     {
         $tags = $this->request->params['pass'];

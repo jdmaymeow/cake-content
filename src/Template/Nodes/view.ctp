@@ -81,12 +81,18 @@ Cms
                 <th><?= __('Attributes') ?></th>
                 <td style="text-align: right"><?= $node->node_attributes ?></td>
             </tr>
+            <tr>
+                <th><?= __('Node type') ?></th>
+                <td style="text-align: right"><?= $node->node_type ?></td>
+            </tr>
         </table>
 
 
         <div class="">
             <h4><?= __('Body') ?></h4>
             <?= $this->Text->autoParagraph(h($node->body)); ?>
+            <h4><?= __('Markdown') ?></h4>
+            <?= $this->Text->autoParagraph($node->markdown_body); ?>
         </div>
 
         <div class="">

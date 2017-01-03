@@ -11,6 +11,10 @@ Router::plugin(
         $routes->prefix('admin', function ($routes) {
             $routes->fallbacks(DashedRoute::class);
         });
+        $routes->prefix('api', function ($routes) {
+            $routes->extensions(['json', 'xml']);
+            $routes->fallbacks(DashedRoute::class);
+        });
     }
 );
 

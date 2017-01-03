@@ -44,18 +44,18 @@ Cms
             </div>
             <div class="panel-body">
                 <?= $this->Form->create($node, [
-                    'type'=>'file',
+                    'type' => 'file',
                     'align' => [
-                    'sm' => [
-                        'left' => 6,
-                        'middle' => 6,
-                        'right' => 12
-                    ],
-                    'md' => [
-                        'left' => 3,
-                        'middle' => 9
-                    ]
-                ]]) ?>
+                        'sm' => [
+                            'left' => 6,
+                            'middle' => 6,
+                            'right' => 12
+                        ],
+                        'md' => [
+                            'left' => 3,
+                            'middle' => 9
+                        ]
+                    ]]) ?>
 
                 <div class="form-body">
                     <?php

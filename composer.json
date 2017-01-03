@@ -9,7 +9,8 @@
         "jdmaymeow/cake-auth": ">=1.0 <2.0",
         "jdmaymeow/cake-bootstrap": ">=1.0 <2.0",
         "jdmaymeow/cake-file": ">=1.0 <2.0",
-        "jdmaymeow/cake-taxonomy": ">=1.0 <2.0"
+        "jdmaymeow/cake-taxonomy": ">=1.0 <2.0",
+        "jdmaymeow/cake-markdown": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
